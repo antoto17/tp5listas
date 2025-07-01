@@ -1,0 +1,79 @@
+1. Función void enigma(Nodo* nodo)
+
+void enigma(Nodo* nodo) {
+    if (nodo != nullptr)
+        if (nodo->getSiguiente() == nullptr)
+            cout << nodo->getDato() << endl;
+        else {
+            enigma(nodo->getSiguiente());
+            cout << nodo->getDato() << endl;
+        }
+}
+
+Acción que realiza:
+Esta función recibe un puntero a un nodo como parámetro y recorre la lista enlazada de forma recursiva. Primero llega hasta el último nodo de la lista, y luego, al ir retornando de cada llamada recursiva, imprime el dato del nodo.
+El recorrido no muestra los valores al avanzar, sino que los imprime al regresar. Por eso, los elementos se muestran desde el final hacia el principio.
+
+Propósito:
+El objetivo de esta función es imprimir los elementos de la lista enlazada simple en orden inverso, es decir, desde el último nodo hacia el primero. Utiliza la recursión como herramienta para lograr esto, sin usar estructuras auxiliares como pilas.
+
+Resultado esperado con la lista:
+6 → 4 → 9 → 5 → 8 → NULL
+La salida sería:
+8
+5
+9
+4
+6
+
+
+2. Función int misterio(Nodo* nodo)
+
+int misterio(Nodo* nodo) {
+    if (nodo == nullptr)
+        return 0;
+    else
+        return misterio(nodo->getSiguiente()) + 1;
+}
+
+Acción que realiza:
+Esta función tiene como entrada un puntero al primer nodo de una lista enlazada y devuelve un entero. A través de recursión, va llamándose a sí misma hasta llegar al final de la lista (cuando el puntero es nullptr). Por cada nodo encontrado, suma 1. Al final, retorna la suma total de nodos.
+
+Propósito:
+Determinar cuántos elementos contiene la lista enlazada. Sirve para contar la cantidad total de nodos sin necesidad de usar una variable acumuladora externa, aprovechando la recursión.
+
+Resultado esperado con la lista:
+6 → 4 → 9 → 5 → 8 → NULL
+El resultado es:
+5
+
+
+3. Función Nodo* desconocido(Nodo* nodo)
+
+Nodo* desconocido(Nodo* nodo) {
+    if (nodo == nullptr || nodo->getSiguiente() == nullptr)
+        return nodo;
+    else
+        return desconocido(nodo->getSiguiente());
+}
+
+Acción que realiza:
+La función recorre recursivamente una lista enlazada simple hasta encontrar el último nodo. Una vez que el nodo actual no tenga siguiente (getSiguiente() == nullptr), lo devuelve. Es decir, retorna un puntero al último nodo de la lista.
+
+Propósito:
+Devolver un puntero que apunte al último nodo de una lista enlazada simple. Es útil cuando se necesita saber cuál es el último nodo, por ejemplo, para insertar al final sin recorrer la lista de forma iterativa.
+
+Resultado esperado con la lista:
+6 → 4 → 9 → 5 → 8 → NULL
+La función devolvería un puntero al nodo que contiene el número 8.
+
+
+Lista utilizada para todas las pruebas:
+Se utiliza la siguiente lista enlazada simple:
+
+Nodo con valor 6
+→ apunta al nodo con valor 4
+→ apunta al nodo con valor 9
+→ apunta al nodo con valor 5
+→ apunta al nodo con valor 8
+→ apunta a NULL (fin de la lista)
